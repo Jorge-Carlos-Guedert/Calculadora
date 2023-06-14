@@ -1,0 +1,153 @@
+<ion-content [fullscreen]="true">
+  <div id="full">
+    <div id="numbers">
+      <ion-row>
+        <ion-col>
+          <h1>{{numero}}</h1>
+        </ion-col>
+      </ion-row>
+    </div>
+
+    <div id="container">
+      <ion-grid>
+        <ion-row>
+          <ion-col>
+            <ion-button expand="block" color="medium" (click)="clear()">
+              AC
+            </ion-button>
+          </ion-col>
+
+          <ion-col>
+            <ion-button expand="block" color="medium" (click)="negativo()"
+              >+/-</ion-button
+            >
+          </ion-col>
+
+          <ion-col>
+            <ion-button expand="block" color="medium" (click)="percentual()"
+              >%</ion-button
+            >
+          </ion-col>
+          <ion-col>
+            <ion-button
+              expand="block"
+              color="warning"
+              style="font-weight: bold"
+              (click)="dividir()"
+              >/</ion-button
+            >
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+      <ion-grid>
+        <ion-row>
+          <ion-col>
+            <ion-button expand="block" color="dark" (click)="numeros('7')"
+              >7</ion-button
+            >
+          </ion-col>
+
+          <ion-col>
+            <ion-button expand="block" color="dark" (click)="numeros('8')"
+              >8</ion-button
+            >
+          </ion-col>
+
+          <ion-col>
+            <ion-button expand="block" color="dark" (click)="numeros('9')"
+              >9</ion-button
+            >
+          </ion-col>
+          <ion-col>
+            <ion-button
+              expand="block"
+              color="warning"
+              style="font-weight: bold"
+              (click)="multiplicar()"
+              >X</ion-button
+            >
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+      <ion-grid>
+        <ion-row>
+          <ion-col>
+            <ion-button expand="block" color="dark" (click)="numeros('4')"
+              >4</ion-button
+            >
+          </ion-col>
+
+          <ion-col>
+            <ion-button expand="block" color="dark" (click)="numeros('5')"
+              >5</ion-button
+            >
+          </ion-col>
+
+          <ion-col>
+            <ion-button expand="block" color="dark" (click)="numeros('6')"
+              >6</ion-button
+            >
+          </ion-col>
+          <ion-col>
+            <ion-button
+              expand="block"
+              color="warning"
+              style="font-weight: bold"
+              (click)="subtrair()"
+              >-</ion-button
+            >
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+      <ion-grid>
+        <ion-row>
+          <ion-col>
+            <ion-button expand="block" color="dark" (click)="numeros('1')"
+              >1</ion-button
+            >
+          </ion-col>
+
+          <ion-col>
+            <ion-button expand="block" color="dark" (click)="numeros('2')"
+              >2</ion-button
+            >
+          </ion-col>
+
+          <ion-col>
+            <ion-button expand="block" color="dark" (click)="numeros('3')"
+              >3</ion-button
+            >
+          </ion-col>
+          <ion-col>
+            <ion-button
+              expand="block"
+              color="warning"
+              style="font-weight: bold"
+              (click)="somar()"
+              >+</ion-button
+            >
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col size="6">
+            <ion-button expand="block" color="dark" (click)="numeros('0')"
+              >0</ion-button
+            >
+          </ion-col>
+
+          <ion-col>
+            <ion-button expand="block" color="dark" (click)="virgula()"
+              >,</ion-button
+            >
+          </ion-col>
+
+          <ion-col>
+            <ion-button expand="block" color="warning" (click)="igual()"
+              >=</ion-button
+            >
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>
+  </div>
+</ion-content>
