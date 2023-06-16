@@ -9,6 +9,7 @@ export class HomePage {
   public numero = '0';
   public numeroAux = '0';
   public operacao = '';
+  public newNumber = false;
 
   constructor() {}
 
@@ -18,23 +19,27 @@ export class HomePage {
   }
 
   somar() {
-    this.operacao = 'mais';
+    this.operacao = 'somar';
     this.numeroAux = this.numero;
+    this.newNumber = true;
   }
 
   multiplicar() {
     this.operacao = 'multiplicar';
     this.numeroAux = this.numero;
+    this.newNumber = true;
   }
 
   dividir() {
     this.operacao = 'dividir';
     this.numeroAux = this.numero;
+    this.newNumber = true;
   }
 
   subtrair() {
     this.operacao = 'menos';
     this.numeroAux = this.numero;
+    this.newNumber = true;
   }
 
   clear() {
@@ -51,42 +56,52 @@ export class HomePage {
   }
 
   percentual() {
-    this.operacao = ''
-    this.numeroAux = ''
+    this.operacao = '';
+    this.numeroAux = '';
 
-    this.numero = (this.converte(this.numero)/ 100).toString().replace('.', ',');
+    this.numero = (this.converte(this.numero) / 100)
+      .toString()
+      .replace('.', ',');
   }
 
   igual() {
     const numeroFinal = this.converte(this.numero);
     const numeroFinalAux = this.converte(this.numeroAux);
-    
-    switch (this.operacao){
-      case 'somar' :
-        this.numero = this.numero + this.numeroAux ;
+
+    switch (this.operacao) {
+      case 'somar':
+        this.numero = this.sum(numeroFinal, numeroFinalAux).toString();
         break;
 
-      case 'subtrair' :
-          
-        break;  
+      case 'subtrair':
+        this.numero = this.subtract(numeroFinal, numeroFinalAux).toString();
+        break;
 
-      case 'multlipicar' :
-          
-        break; 
+      case 'multlipicar':
+        this.numero = this.multiply(numeroFinal, numeroFinalAux).toString();
 
-      case 'dividir' :
-          
-        break;  
+        break;
+
+      case 'dividir':
+        this.numero = this.divide(numeroFinal, numeroFinalAux).toString();
+
+        break;
     }
+    this.operacao = '';
   }
 
   numeros(num: string) {
-    if (this.numero.startsWith('0') && this.numero.startsWith('0,')) {
+    if (this.numero.startsWith('0') && !this.numero.startsWith('0,')) {
       this.numero = '';
     }
 
     if (this.numero.length <= 8) {
-      this.numero += num;
+      if (this.newNumber) {
+        this.numero = num;
+        this.newNumber = false;
+      } else {
+        this.numero += num;
+      }
     }
   }
 
@@ -102,5 +117,21 @@ export class HomePage {
     } else {
       return parseInt(dados);
     }
+  }
+
+  sum(a: number, b: number): number {
+    return a + b;
+  }
+
+  subtract(a: number, b: number): number {
+    return a - b;
+  }
+
+  multiply(a: number, b: number): number {
+    return a * b;
+  }
+
+  divide(a: number, b: number): number {
+    return a / b;
   }
 }
