@@ -16,6 +16,7 @@ export class HomePage {
   ngOnInit() {
     this.numero = '0';
     this.numeroAux = '0';
+    this.newNumber = true;
   }
 
   somar() {
@@ -37,7 +38,7 @@ export class HomePage {
   }
 
   subtrair() {
-    this.operacao = 'menos';
+    this.operacao = 'subtrair';
     this.numeroAux = this.numero;
     this.newNumber = true;
   }
@@ -45,6 +46,7 @@ export class HomePage {
   clear() {
     this.numero = '0';
     this.numeroAux = '0';
+    this.newNumber = true;
   }
 
   negativo() {
@@ -58,8 +60,12 @@ export class HomePage {
   percentual() {
     this.operacao = '';
     this.numeroAux = '';
+    const fixado = this.numero.includes(',')
+      ? this.numero.split(',')[1].length + 2
+      : 0;
 
-    this.numero = (this.converte(this.numero) / 100)
+    this.numero = (this.converte(this.numero)/100)
+      .toFixed(fixado)
       .toString()
       .replace('.', ',');
   }
@@ -77,7 +83,7 @@ export class HomePage {
         this.numero = this.subtract(numeroFinal, numeroFinalAux).toString();
         break;
 
-      case 'multlipicar':
+      case 'multiplicar':
         this.numero = this.multiply(numeroFinal, numeroFinalAux).toString();
 
         break;
@@ -92,11 +98,11 @@ export class HomePage {
 
   numeros(num: string) {
     if (this.numero.startsWith('0') && !this.numero.startsWith('0,')) {
-      this.numero = '';
+      this.operacao = '';
     }
 
     if (this.numero.length <= 8) {
-      if (this.newNumber) {
+        if (this.newNumber) {
         this.numero = num;
         this.newNumber = false;
       } else {
@@ -120,18 +126,26 @@ export class HomePage {
   }
 
   sum(a: number, b: number): number {
+    console.log({ a });
+    console.log({ b });
     return a + b;
   }
 
   subtract(a: number, b: number): number {
-    return a - b;
+    console.log({ a });
+    console.log({ b });
+    return b - a;
   }
 
   multiply(a: number, b: number): number {
+    console.log({ a });
+    console.log({ b });
     return a * b;
   }
 
   divide(a: number, b: number): number {
-    return a / b;
+    console.log({ a });
+    console.log({ b });
+    return b / a;
   }
 }
